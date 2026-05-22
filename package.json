@@ -1,0 +1,68 @@
+{
+  "name": "gtin-checksum",
+  "version": "1.0.0",
+  "description": "GS1 modulo-10 check-digit calculator and validator for GTIN-8, GTIN-12 (UPC-A), GTIN-13 (EAN-13), and GTIN-14 (ITF-14). Zero dependencies, TypeScript-native, tested against official GS1 test vectors.",
+  "keywords": [
+    "gtin",
+    "gtin-8",
+    "gtin-12",
+    "gtin-13",
+    "gtin-14",
+    "upc",
+    "upc-a",
+    "ean",
+    "ean-13",
+    "ean-8",
+    "itf-14",
+    "gs1",
+    "check-digit",
+    "checksum",
+    "modulo-10",
+    "barcode",
+    "product-feed",
+    "ecommerce"
+  ],
+  "homepage": "https://github.com/marius103/gtin-checksum#readme",
+  "bugs": {
+    "url": "https://github.com/marius103/gtin-checksum/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marius103/gtin-checksum.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Marius Pahomi",
+    "url": "https://www.feedarc.com/author/marius"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm test && npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
