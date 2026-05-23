@@ -1,0 +1,39 @@
+version: 2
+
+updates:
+  # Keep npm dependencies up-to-date weekly. devDependencies only (vitest,
+  # typescript) — the package has zero runtime dependencies by design, so
+  # only the dev/build chain needs monitoring.
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Bucharest"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+    groups:
+      # Group minor + patch updates into a single PR to reduce noise.
+      # Major updates remain as individual PRs (need manual review for
+      # potential breaking changes in vitest / typescript).
+      minor-and-patch:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+          - "patch"
+
+  # Keep GitHub Actions versions current. The CI workflow pins to major
+  # versions (@v5 etc.); dependabot will surface new majors as PRs to
+  # review before adoption.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Bucharest"
+    labels:
+      - "dependencies"
+      - "github-actions"
